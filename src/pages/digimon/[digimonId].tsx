@@ -1,8 +1,6 @@
 import { GetStaticPropsContext } from "next"
 import Image from 'next/image';
 
-import { PokeAPI } from "pokeapi-types"
-
 import styles from '@/styles/Digimon.module.css'
 
 import { useRouter } from "next/router";
@@ -150,16 +148,6 @@ export default function Digimon({ digimonData }: digimonData) {
                     ))}
                 </div>
             </div>
-            {/* <div className={styles.data_container}>
-                <div className={styles.data_height}>
-                    <h4>Altura:</h4>
-                    <p>{digimonData.height * 10} cm</p>
-                </div>
-                <div className={styles.data_weight}>
-                    <h4>Peso:</h4>
-                    <p>{digimonData.weight / 10} kg</p>
-                </div>
-            </div> */}
         </div>
     )
 }
