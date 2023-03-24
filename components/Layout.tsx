@@ -12,7 +12,7 @@ export default function Layout({ children }: MyProps) {
     return (
         <>
             <Head>
-                <link rel="shortcut icon" href="/images/favicon.ico" />
+                <link rel="shortcut icon" href="/favicon.ico" />
                 <title>LFE_PokeNext</title>
             </Head>
             <Navbar />

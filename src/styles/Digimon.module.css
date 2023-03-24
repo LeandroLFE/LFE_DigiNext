@@ -1,4 +1,4 @@
-.pokemon_container {
+.digimon_container {
   text-align: center;
 }
 
@@ -12,7 +12,7 @@
   width: fit-content;
 }
 
-.pokemon_container h3 {
+.digimon_container h3 {
   margin: 0.6em auto;
   font-size: 1.2em;
 }
@@ -34,7 +34,7 @@
   font-size: 0.8em;
 }
 
-.type_normal {
+/* .type_normal {
   background-color: #aa9;
 }
 
@@ -104,7 +104,7 @@
 
 .type_fairy {
   background-color: #e9e;
-}
+} */
 
 .data_container {
   display: flex;

@@ -1,51 +1,65 @@
-import { PokeAPI } from 'pokeapi-types';
-
 import styles from '@/styles/Home.module.css'
 import Card from '../../components/Card';
 
 import Image from 'next/image';
 
+
+interface digimon {
+  id: number,
+  name: string,
+  href: string,
+  image: string
+}
+
+interface pageable {
+  currentPage: number,
+  elementsOnPage: number,
+  totalElements: number,
+  totalPages: number,
+  previousPage: string,
+  nextPage: string,
+}
+
 interface props {
-  pokemons: PokeAPI.Pokemon[],
+  digimons: {
+    content: digimon[],
+    pageable: pageable
+  }
 }
 
 
 export async function getStaticProps() {
 
-  const maxPokemons = 251;
-  const api = "https://pokeapi.co/api/v2/pokemon"
+  const maxDigimons = 251;
+  const api = "https://www.digi-api.com/api/v1/digimon"
 
-  const res = await fetch(`${api}/?limit=${maxPokemons}`)
+  const res = await fetch(`${api}/?pageSize=${maxDigimons}`)
   const data = await res.json()
 
-  // Add pokemon index
-  data.results.forEach((item: PokeAPI.Pokemon, index: number) => {
-    item.id = index + 1;
-  })
   return {
     props: {
-      pokemons: data.results,
+      digimons: data,
     }
   }
 }
 
-export default function Home({ pokemons }: props) {
+export default function Home({ digimons }: props) {
   return (
     <>
       <div className={styles.title_container}>
         <h1 className={styles.title}>
-          LFE_Poke<span>Next</span>
+          LFE_Digi<span>Next</span>
         </h1>
         <Image
-          src="/images/pokeball.png"
+          src={"/images/digivice.png"}
           width={50}
           height={50}
           alt='pokeNext'
         />
       </div>
-      <div className={styles.pokemon_container}>
-        {pokemons.map((pokemon) => (
-          <Card pokemon={pokemon}/>
+      <div className={styles.digimon_container}>
+        {digimons.content.map((digimon: digimon) => (
+          <Card digimon={digimon} />
         ))}
       </div>
     </>
