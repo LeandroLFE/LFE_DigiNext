@@ -14,7 +14,7 @@ interface digimon {
 
 export default function Card({ digimon }: digimon) {
   return (
-    <div className={styles.card} key={digimon.id}>
+    <div className={styles.card}>
       <Image
         src={`${digimon.image}`}
         width={120}

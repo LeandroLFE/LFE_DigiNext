@@ -59,7 +59,7 @@ export default function Home({ digimons }: props) {
       </div>
       <div className={styles.digimon_container}>
         {digimons.content.map((digimon: digimon) => (
-          <Card digimon={digimon} />
+          <Card digimon={digimon} key={`Card_${digimon.id}`} />
         ))}
       </div>
     </>

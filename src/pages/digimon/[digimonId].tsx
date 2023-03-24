@@ -35,6 +35,11 @@ interface field {
     field: string
 }
 
+interface attribute {
+    id: number
+    attribute: string
+}
+
 interface description {
     origin: string
     language: string
@@ -65,6 +70,7 @@ interface digimonData {
         levels: level[]
         types: type[]
         fields: field[]
+        attributes: attribute[]
         releaseDate: string
         descriptions: description[]
         skills: skill[]
@@ -136,14 +142,53 @@ export default function Digimon({ digimonData }: digimonData) {
                 <p>#{digimonData.id}</p>
             </div>
             <div>
+                <h3>Níveis:</h3>
+                <div className={styles.levels_container}>
+                    {digimonData.levels.map((item) => (
+                        <span
+                            key={`level_${item.id}`}
+                            className={`${styles.type} ${styles['level_' + item.level]}`}
+                        >
+                            {item.level}
+                        </span>
+                    ))}
+                </div>
+            </div>
+            <div>
                 <h3>Tipo:</h3>
                 <div className={styles.types_container}>
                     {digimonData.types.map((item) => (
                         <span
-                            key={item.id}
+                            key={`type_${item.id}`}
                             className={`${styles.type} ${styles['type_' + item.type]}`}
                         >
                             {item.type}
+                        </span>
+                    ))}
+                </div>
+            </div>
+            <div>
+                <h3>Atributos:</h3>
+                <div className={styles.attributes_container}>
+                    {digimonData.attributes.map((item) => (
+                        <span
+                            key={`attribute_${item.id}`}
+                            className={`${styles.type} ${styles['attribute_' + item.attribute]}`}
+                        >
+                            {item.attribute}
+                        </span>
+                    ))}
+                </div>
+            </div>
+            <div>
+                <h3>Campos:</h3>
+                <div className={styles.fields_container}>
+                    {digimonData.fields.map((item) => (
+                        <span
+                            key={`field_${item.id}`}
+                            className={`${styles.field} ${styles['field_' + item.field]}`}
+                        >
+                            <Image src={`https://digimon-api.com/images/etc/fields/${item.field}.png`} alt={item.field} height={32} width={32} />
                         </span>
                     ))}
                 </div>
